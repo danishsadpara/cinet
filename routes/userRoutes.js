@@ -23,6 +23,32 @@ router.post('/', async function (req, res, next) {
     res.status(500).send(error);
   }
 });
+
+router.put('/', async function (req, res, next) {
+  const body = req.body;
+  if(!body._id){
+    return res.status(400).send({message:"_id is required"});
+  }
+  // console.log(query);
+  try {
+    const result = await usersController.updateUser(body);
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+router.delete('/:id', async function (req, res, next) {
+  const id= req.params.id;
+  // console.log(query);
+  try {
+    const filter = {_id:id }
+    const result = await usersController.deleteUser(filter);
+    res.status(200).send('Deleted successfully');
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 //router must have url mean slash- and have callback function.
 // must have request, response. next mean execution from one middle ware to another middle ware.
 
