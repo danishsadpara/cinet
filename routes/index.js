@@ -1,9 +1,11 @@
-var express = require('express');
-var router = express.Router();
+// we make this middleware all router will be access form here
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'center of excellence' });
-});
+const userRoutes= require('./userRoutes');
+const adminRoutes= require('./adminRoutes');
+const clientRoutes= require('./clientRoutes');
 
-module.exports = router;
+module.exports ={
+  userRoutes,
+  adminRoutes,
+  clientRoutes
+}

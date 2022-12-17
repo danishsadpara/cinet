@@ -4,7 +4,7 @@ const {
 
 const addAdmin = (body) => {
     const doc = new adminModel(body); //json file 
-    const query = { _id: doc._id };
+    const query = { _id: doc._id }; //: ois like = value. -closure variable
     return adminModel.findByIdAndUpdate(query, doc, {
         upsert: true,  //add new object everytime in db.
         new: true //latest data in response.

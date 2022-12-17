@@ -5,7 +5,7 @@ const {
 const addClient = (body) => {
     const doc = new clientModel(body); //json file 
     const query = { _id: doc._id };
-    return clientModel.findByIdAndUpdate(query, doc, {
+    return clientModel.findOneAndUpdate(query, doc, {
         upsert: true,  //add new object everytime in db.
         new: true //latest data in response.
     });
@@ -14,7 +14,7 @@ const addClient = (body) => {
 const updateClient = (body) => {
     // const doc=new userModel(body); //json file 
     const query = { _id: body._id };
-    return clientModel.findByIdAndUpdate(query, body, {
+    return clientModel.findOneAndUpdate(query, body, {
         //    upsert:true,  //add new object everytime in db. no need.
         new: true //latest data in response.
     });
