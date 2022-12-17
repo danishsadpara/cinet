@@ -1,11 +1,11 @@
 const {
-    userModel
+    adminModel
 } = require('../models');
 
 const addAdmin = (body) => {
-    const doc = new userModel(body); //json file 
+    const doc = new adminModel(body); //json file 
     const query = { _id: doc._id };
-    return userModel.findByIdAndUpdate(query, doc, {
+    return adminModel.findByIdAndUpdate(query, doc, {
         upsert: true,  //add new object everytime in db.
         new: true //latest data in response.
     });
@@ -14,7 +14,7 @@ const addAdmin = (body) => {
 const updateAdmin = (body) => {
     // const doc=new userModel(body); //json file 
     const query = { _id: body._id };
-    return userModel.findByIdAndUpdate(query, body, {
+    return adminModel.findByIdAndUpdate(query, body, {
         //    upsert:true,  //add new object everytime in db. no need.
         new: true //latest data in response.
     });
@@ -23,17 +23,17 @@ const updateAdmin = (body) => {
 //    deleteuser
 const deleteAdmin = (filter) => {
 
-    return userModel.deleteOne(filter);
+    return adminModel.deleteOne(filter);
 };
 // get all users 
 const getAllAdmins = (filter) => {
 
-    return userModel.find(filter);
+    return adminModel.find(filter);
 };
 // get single user 
 const getAdmin = (filter) => {
 
-    return userModel.findOne(filter);
+    return adminModel.findOne(filter);
 };
 
 
