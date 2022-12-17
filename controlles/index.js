@@ -1,4 +1,6 @@
 const usersController = require('./usersController');
 module.exports = {
-    usersController
+    usersController,
+    clientController,
+    adminController
 };
