@@ -1,7 +1,7 @@
 //HW
 const mongoose = require('mongoose'); //hardcoded
 const adminSchema = new mongoose.Schema({
-    fisrtName: {
+    firstName: {
         type: String,
         required: true
     },
@@ -9,6 +9,10 @@ const adminSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    dob:{
+        type:Date,
+        required: true
+    }
   
 },
     {
