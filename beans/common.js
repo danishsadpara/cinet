@@ -1,11 +1,10 @@
 const {
-    userController,
+    usersController,
     adminController,
     clientController,
-    usersController
 } = require('../controlles')
 
-const singup = async (body) => {
+const signup = async (body) => {
     // apply validation
     if (!body.userName) {
         return Promise.reject({ error: "userName is required" });
@@ -77,5 +76,5 @@ const singup = async (body) => {
 };
 
 module.exports = {
-    singup
+    signup
 }

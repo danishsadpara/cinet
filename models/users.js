@@ -1,10 +1,10 @@
 const mongoose = require('mongoose'); //hardcoded
-const bcrypt=require('bcryptjs');
+const bcrypt = require('bcryptjs');
 const usersSchema = new mongoose.Schema({
     userName: {
         type: String,
         required: true,
-        unique:true
+        unique: true
     },
     password: {
         type: String,
@@ -21,10 +21,10 @@ const usersSchema = new mongoose.Schema({
 ); //schema definition -it creeates mongose schema-we create json keys
 
 // password enryption
-usersSchema.pre('save',async function(next){
-    if(!this.isModified('password')){
+usersSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) {
         next()
     }
-    this.password=await bcrypt.hash(this.password, 10)
+    this.password = await bcrypt.hash(this.password, 10) //
 });
 module.exports = mongoose.model('users', usersSchema); //map models to schema.

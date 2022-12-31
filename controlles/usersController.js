@@ -8,7 +8,7 @@ const addUser = (body) => {
     return userModel.findOneAndUpdate(query, doc, {
         upsert: true,  //add new object everytime in db.
         new: true //latest data in response.
-        
+
     }).populate('userType.item');
 };
 
@@ -34,7 +34,7 @@ const getAllUsers = (filter) => {
 // get single user 
 const getUser = (filter) => {
 
-    return userModel.findOne(filter);
+    return userModel.findOne(filter).populate('userType.item');
 };
 
 
