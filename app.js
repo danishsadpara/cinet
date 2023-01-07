@@ -10,6 +10,9 @@ const passport = require('passport');
 //impot passport local
 const { Strategy } = require('passport-local');
 // var indexRouter = require('./routes/index');
+// CORS inegration
+const inputMiddleware = require('./middlewares/inputMiddleware');
+
 // import routes 
 const {
   userRoutes,
@@ -48,6 +51,7 @@ passport.use(new Strategy(
   }
 ));
 // actual routes 
+app.use(inputMiddleware.handleOptions);
 app.post('/signup', authMiddleware.userSignup);
 app.post('/login',
   passport.initialize(),
